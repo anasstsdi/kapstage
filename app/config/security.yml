@@ -1,0 +1,46 @@
+security:
+    encoders:
+       FOS\UserBundle\Model\UserInterface: sha512
+   
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        chain_provider:
+            chain:
+                providers: [fos_userbundle, fos_facebook]
+        fos_userbundle:
+            id: gripli_user.user_provider.email
+        fos_facebook:
+            id: gripli_user.user_provider.facebook
+
+    firewalls:
+        dev:
+            pattern: ^/
+            fos_facebook:
+                app_url: "http://apps.facebook.com/646949945373670/"
+                server_url: "http://dev.grepli.com/"
+                login_path: /login
+                check_path: /fb/login_check
+                default_target_path: /profile
+                provider: fos_facebook
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                always_use_default_target_path: true
+                default_target_path:   /profile
+                check_path: /login_check
+                login_path: /login
+            logout:
+                path:   /logout
+                
+                target: /Home
+            anonymous:    true
+            
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role:  ROLE_ADMIN }

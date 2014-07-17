@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">   
+<head>
+    <script>
+    function goLogIn(){
+        window.location.href = "{{ path('_fb_login_check') }}";
+    }
+
+    function onFbInit() {
+        if (typeof(FB) != 'undefined' && FB != null ) {              
+            FB.Event.subscribe('auth.statusChange', function(response) {
+                if (response.session || response.authResponse) {
+                    setTimeout(goLogIn, 500);
+                } else {
+                    window.location.href = "{{ path('_fb_logout') }}";
+                }
+            });
+        }
+    }
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}Check Email{% endblock %}</title>
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('bundles/greplicheckemail/css/style.css') }}" type="text/css" media="all" />{% endblock %}
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block meta_title %} <meta name="viewport" content="width=device-width"> {% endblock %}
+</head>
+<body>
+  {{ facebook_initialize({'xfbml': true, 'culture': 'fr_FR', 'fbAsyncInit': 'onFbInit();'}) }}
+{% block body %}  
+<h1>{% block h2 %} Kapstages {% endblock %}</h1>
+
+<div id="wrap">
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <h3> Bonjour {{ app.security.getToken().getUser()  }} </h3>
+{% else %}
+   <h3> Bonjour Anonymous </h3>
+{% endif %}	
+	{% block content %}
+<div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+</div>
+{% endblock %}
+
+</div>
+
+<p class="mentions">Page {{ block('title') }}</a></p>
+
+{% endblock %}
+
+</body>
+</html>

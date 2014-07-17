@@ -1,0 +1,27 @@
+<?php
+
+namespace Grepli\CheckEmailBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="email_index")
+     * @Template()
+     */
+    public function indexAction()
+    {
+        return array();
+    }
+    /**
+     * @Route("/check", name="email_check")
+     * @Template()
+     */
+    public function checkAction()
+    {
+        return array($message =>"invaluid");
+    }
+}

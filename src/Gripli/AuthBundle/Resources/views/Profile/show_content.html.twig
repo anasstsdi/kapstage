@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<button type="button" onclick="self.location.href='/logout'" style="position:absolute;width:20em;left:62em;top:159px;">Déconnecter</button>
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p>Nom: {{ user.lastname }}</p>
+    <p>Prènom: {{ user.firstname }}</p>
+    <button type="button" onclick="self.location.href='edit'">Editer</button>
+    <button type="button" onclick="self.location.href='/remove'">Supprimer votre compte</button>
+    <button type="button" onclick="self.location.href='/Home'">Home</button>
+</div>

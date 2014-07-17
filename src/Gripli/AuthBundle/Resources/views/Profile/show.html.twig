@@ -1,0 +1,7 @@
+{% extends "GripliAuthBundle::layout.html.twig" %}
+
+{% block title %}Espace utilisateur{% endblock title %}
+{% block h2 %}Espace privé{% endblock h2 %}
+{% block fos_user_content %}
+{% include "GripliAuthBundle:Profile:show_content.html.twig" %}
+{% endblock fos_user_content %}

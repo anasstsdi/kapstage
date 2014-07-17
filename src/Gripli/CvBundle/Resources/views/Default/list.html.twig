@@ -1,0 +1,28 @@
+{% extends "GripliAuthBundle::layout.html.twig" %}
+{% block title %}
+Liste des CV{% endblock title %}
+{% block h2 %}Liste des CV{% endblock h2 %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div>
+    <h3><b>Vos CV</b></h3>
+<table cellspacing="0" cellpadding="4" width="100%" STYLE=" border-style:solid;
+border-color:#7aa37a;margin-left: 10em;">
+<tr> <td> id </td>
+    <td> Titre </td>
+      <td> Propriètaire </td>
+</tr>
+
+{% for hist in cv %}
+<tr> <td> {{hist.getId}} </td>
+    <td> {{hist.getTitle}} </td>
+    <td> {{hist.getuser().getLastname}} </td>
+    <td> <a href="{{ path('cv', {'id': hist.getId}) }}" >Voir</a> </td>
+</tr>
+{% endfor %}
+ </table>   
+   </div> 
+{% endblock fos_user_content %}
+
+

@@ -1,0 +1,11 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+    {{ form_widget(form) }}
+    
+    <br><input style="margin-left: 26em;"type="radio" name="type" value="company">Entreprise<br>
+    <input style="margin-left: 26em;"type="radio" name="type" value="school">Ecole
+    <div><br>
+        <input id="fos_user_registration_form_submit" type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+</form>

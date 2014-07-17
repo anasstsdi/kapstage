@@ -1,0 +1,26 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+       <service id="sonata.admin.post" class="Gripli\AuthBundle\Admin\PostAdmin">
+          <tag name="sonata.admin" manager_type="doctrine_mongodb" group="Content" label="Post"/>
+          <argument />
+          <argument>Gripli\AuthBundle\Document\Post</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>GripliAuthBundle</argument>
+          </call>
+      </service>
+      
+           <service id="sonata.admin.user" class="Gripli\AuthBundle\Admin\UsersAdmin">
+          <tag name="sonata.admin" manager_type="doctrine_mongodb" group="Content" label="Users"/>
+          <argument />
+          <argument>Gripli\AuthBundle\Document\Users</argument>
+          <argument />
+          <call method="setTranslationDomain">
+              <argument>GripliAuthBundle</argument>
+          </call>
+      </service>
+      
+   </services>
+</container>

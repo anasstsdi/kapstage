@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}Watch My Desk{% endblock %}</title>
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('bundles/greplicheckemail/css/style.css') }}" type="text/css" media="all" />{% endblock %}
+<link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+{% block meta_title %} <meta name="viewport" content="width=device-width"> {% endblock %}
+</head>
+<body>
+{% block body %}
+
+<h1>Verification d'email</h1>
+
+<div id="wrap">
+
+	<h2>Merci de renseigner votre adresse Email</h2>
+	
+	<form  METHOD="POST" ACTION="{{ path('email_index') }}">
+		<label for="champ1">Votre adresse e-mail</label>
+		<input type="email" id="champ1" required>
+		<br /><br />
+		<button>Vérifier</button>
+	</form>
+
+</div>
+
+<p class="mentions">Page de vérification d'email</a></p>
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

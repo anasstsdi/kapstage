@@ -1,0 +1,6 @@
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('bundles/griplicv/css/resume.css') }}" type="text/css" media="all" />
+{% endblock %}
+<h3><a id="pdf" href="{{ path('gripli_cv_default_getpdf', {'id': cv.getId}) }}" >Download PDF</a></h3>
+{% include "GripliCvBundle:Default:cv.html.twig" %}

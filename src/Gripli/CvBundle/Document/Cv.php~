@@ -1,0 +1,88 @@
+<?php
+namespace Gripli\CvBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gripli\AuthBundle\Document\Users;
+/**
+ * @MongoDB\Document
+ */
+class Cv
+{
+      /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
+
+    /**
+     * @MongoDB\string $title
+     */
+    protected $title;
+
+        /**
+     * @MongoDB\string $name
+     */
+    protected $name;
+    
+        /**
+     * @MongoDB\string $reference
+     */
+    protected $reference;
+    
+        /**
+     * @MongoDB\string $statut
+     */
+    protected $statut;
+    
+        /**
+     * @MongoDB\int $viewcount
+     */
+    protected $viewcount;
+    
+            /**
+     * @MongoDB\int $remuneration
+     */
+    protected $remuneration;
+    
+     /**
+     * @MongoDB\string $grade
+     */
+    protected $grade;
+    
+   /** @MongoDB\ReferenceOne(targetDocument="Gripli\AuthBundle\Document\Users", inversedBy="cv") */
+    private $user;
+
+
+ 
+
+    /**
+     * Get id
+     *
+     * @return id $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param Gripli\AuthBundle\Document\Users $user
+     * @return self
+     */
+    public function setUser(\Gripli\AuthBundle\Document\Users $user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return Gripli\AuthBundle\Document\Users $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

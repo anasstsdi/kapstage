@@ -1,0 +1,9 @@
+{% extends "GripliAuthBundle::layout.html.twig" %}
+
+{% block title %}Menu crèation{% endblock title %}
+{% block h2 %}Menu création{% endblock h2 %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% include "GripliAuthBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
